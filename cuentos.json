@@ -31,5 +31,77 @@
     "icono": "❤️‍🩹",
     "descripcion": "Un mensaje para decirte que me encanta tu sonrisa.",
     "audioUrl": "audios/animo-2.ogg"
-  }
+  },
+  {
+    "id": "animo-3",
+    "categoria": "animo",
+    "titulo": "Cantando LULU",
+    "icono": "❤️‍🩹",
+    "descripcion": "Cantando para la bb hermosa.",
+    "audioUrl": "audios/animo-3.ogg"
+ },
+   {
+    "id": "animo-4",
+    "categoria": "animo",
+    "titulo": "Cantando LULU",
+    "icono": "❤️‍🩹",
+    "descripcion": "Cantando para la bb hermosa.",
+    "audioUrl": "audios/animo-3.ogg"
+ },
+   {
+    "id": "animo-5",
+    "categoria": "animo",
+    "titulo": "Cantando LULU",
+    "icono": "❤️‍🩹",
+    "descripcion": "Cantando para la bb hermosa.",
+    "audioUrl": "audios/animo-3.ogg"
+ },
+   {
+    "id": "animo-6",
+    "categoria": "animo",
+    "titulo": "Cantando LULU",
+    "icono": "❤️‍🩹",
+    "descripcion": "Cantando para la bb hermosa.",
+    "audioUrl": "audios/animo-3.ogg"
+ },
+   {
+    "id": "animo-7",
+    "categoria": "animo",
+    "titulo": "Cantando LULU",
+    "icono": "❤️‍🩹",
+    "descripcion": "Cantando para la bb hermosa.",
+    "audioUrl": "audios/animo-3.ogg"
+ },
+   {
+    "id": "animo-8",
+    "categoria": "animo",
+    "titulo": "Cantando LULU",
+    "icono": "❤️‍🩹",
+    "descripcion": "Cantando para la bb hermosa.",
+    "audioUrl": "audios/animo-3.ogg"
+ },
+   {
+    "id": "animo-9",
+    "categoria": "animo",
+    "titulo": "Cantando LULU",
+    "icono": "❤️‍🩹",
+    "descripcion": "Cantando para la bb hermosa.",
+    "audioUrl": "audios/animo-3.ogg"
+ },
+   {
+    "id": "animo-10",
+    "categoria": "animo",
+    "titulo": "Cantando LULU",
+    "icono": "❤️‍🩹",
+    "descripcion": "Cantando para la bb hermosa.",
+    "audioUrl": "audios/animo-3.ogg"
+ },
+   {
+    "id": "animo-11",
+    "categoria": "animo",
+    "titulo": "Cantando LULU",
+    "icono": "❤️‍🩹",
+    "descripcion": "Cantando para la bb hermosa.",
+    "audioUrl": "audios/animo-3.ogg"
+ }
 ]
