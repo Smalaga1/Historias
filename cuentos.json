@@ -18,9 +18,9 @@
   {
     "id": "animo-1",
     "categoria": "animo",
-    "titulo": "Para cuando me extrañes o estés triste",
+    "titulo": "Primer beso en Audio",
     "icono": "🩹",
     "descripcion": "Un mensaje corto recordándote lo fuerte y especial que eres.",
-    "audioUrl": "audios/animo1.mp3"
+    "audioUrl": "audios/animo-1.ogg"
   }
 ]
