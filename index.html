@@ -22,6 +22,7 @@
       color: var(--text);
       min-height: 100vh;
       padding: 20px;
+      padding-bottom: 110px; /* Espacio extra abajo para que el anuncio no tape contenido */
       max-width: 900px;
       margin: 0 auto;
       position: relative;
@@ -69,7 +70,7 @@
       font-size: 1.05rem;
     }
 
-    /* Navegación tipo Carpetas / pestañas */
+    /* Navegación tipo Carpetas */
     .folders-nav {
       display: flex;
       justify-content: center;
@@ -142,7 +143,6 @@
       box-shadow: 0 12px 25px rgba(255, 77, 109, 0.2);
     }
 
-    /* Animación de resplandor cuando un audio se reproduce */
     .card.is-playing {
       border: 2px solid var(--primary);
       box-shadow: 0 0 20px rgba(255, 77, 109, 0.35);
@@ -229,6 +229,86 @@
       transition: transform 0.3s ease;
     }
 
+    /* ESTILOS DEL ANUNCIO ROMÁNTICO FLOTANTE */
+    .romantic-ad-container {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      left: 18px;
+      max-width: 420px;
+      margin: 0 auto;
+      z-index: 1000;
+      animation: slideUpAd 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @media (min-width: 600px) {
+      .romantic-ad-container {
+        left: auto;
+      }
+    }
+
+    .romantic-ad {
+      background: #ffffff;
+      border: 2px solid var(--primary);
+      border-radius: 18px;
+      padding: 14px 18px;
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.25);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .ad-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ad-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 3px 8px;
+      border-radius: 8px;
+    }
+
+    .ad-close-btn {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px;
+    }
+
+    .ad-content {
+      font-size: 0.92rem;
+      color: var(--text);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.35;
+      margin-top: 2px;
+      transition: opacity 0.3s ease;
+    }
+
+    .ad-footer {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-align: right;
+      font-style: normal;
+    }
+
+    @keyframes slideUpAd {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     /* Animaciones Generales */
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-20px); }
@@ -263,7 +343,7 @@
     <p>Historias, cuentos y palabras siempre para ti.</p>
   </header>
 
-  <!-- Navegación por carpetas/secciones -->
+  <!-- Navegación por carpetas -->
   <nav class="folders-nav">
     <button class="folder-btn active" onclick="filterCategory('todos', event)">
       <span>✨</span> Todos
@@ -282,9 +362,66 @@
   <!-- Lista de audios -->
   <main class="catalog" id="catalogContainer"></main>
 
+  <!-- ANUNCIO ROMÁNTICO FLOTANTE -->
+  <div class="romantic-ad-container" id="adContainer">
+    <div class="romantic-ad">
+      <div class="ad-header">
+        <span class="ad-badge">📢 Anuncio Patrocinado</span>
+        <button class="ad-close-btn" onclick="closeAd()" title="Cerrar">✕</button>
+      </div>
+      <div class="ad-content" id="adText">Cargando frase...</div>
+      <div class="ad-footer">Patrocinado por mí ❤️</div>
+    </div>
+  </div>
+
   <script>
     let allAudios = [];
     let currentCategory = 'todos';
+
+    // LISTA DE FRASES Y ANUNCIOS PERSONALIZADOS
+    // (Puedes agregar, quitar o editar todas las frases que quieras aquí)
+    const frasesAnuncios = [
+      "\"¿Ya te dije hoy que eres la persona más especial de mi vida?\"",
+      "\"Recordatorio patrocinado: Eres hermosa incluso cuando te despiertas con despeinada.\"",
+      "\"Aviso importante: Te amo muchísimo más de lo que te imaginas.\"",
+      "\"Anuncio: Tienes la sonrisa más bonita que he visto jamás.\"",
+      "\"Publicidad no pagada: Siempre estaré aquí para ti, pase lo que pase.\"",
+      "\"Recordatorio diario: Recuerda tomar agua y sonreír un poquito hoy.\"",
+      "\"Mensaje especial: Si estás leyendo esto, me debes un abrazo enorme.\""
+    ];
+
+    let currentAdIndex = 0;
+
+    // Rotación automática de frases cada 8 segundos
+    function rotateAd() {
+      const adText = document.getElementById('adText');
+      if (!adText) return;
+      
+      adText.style.opacity = 0;
+      setTimeout(() => {
+        currentAdIndex = (currentAdIndex + 1) % frasesAnuncios.length;
+        adText.innerText = frasesAnuncios[currentAdIndex];
+        adText.style.opacity = 1;
+      }, 300);
+    }
+
+    function closeAd() {
+      const adContainer = document.getElementById('adContainer');
+      if (adContainer) {
+        adContainer.style.opacity = 0;
+        adContainer.style.transform = 'translateY(50px)';
+        setTimeout(() => adContainer.style.display = 'none', 400);
+      }
+    }
+
+    // Inicializar primera frase y temporizador
+    function initAds() {
+      const adText = document.getElementById('adText');
+      if (frasesAnuncios.length > 0 && adText) {
+        adText.innerText = frasesAnuncios[0];
+        setInterval(rotateAd, 8000); // Cambia cada 8000ms (8 segundos)
+      }
+    }
 
     // Generar partículas de corazones flotantes
     function createFloatingHearts() {
@@ -419,6 +556,7 @@
 
     createFloatingHearts();
     loadCatalog();
+    initAds();
   </script>
 </body>
 </html>
