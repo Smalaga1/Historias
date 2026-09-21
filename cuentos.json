@@ -6,48 +6,48 @@
     "icono": "🌹",
     "descripcion": "Un cunetito para que duerma la bb.",
     "audioUrl": "audios/cuento-1.ogg"
-  }
-   {
+  },
+  {
     "id": "cuento-2",
     "categoria": "cuentos",
     "titulo": "Tic tanic",
     "icono": "🌹",
     "descripcion": "Un cunetito para que duerma mi princesa.",
     "audioUrl": "audios/cuento-2.ogg"
-  }
-   {
+  },
+  {
     "id": "cuento-3",
     "categoria": "cuentos",
     "titulo": "Milagros muy milagrosos",
     "icono": "🌹",
     "descripcion": "Un cunetito para que mi hermosa duerma",
     "audioUrl": "audios/cuento-3.ogg"
-  }
-   {
+  },
+  {
     "id": "cuento-4",
     "categoria": "cuentos",
     "titulo": "Capitán mexico",
     "icono": "🌹",
     "descripcion": "Un cunetito para que mima la hermosa.",
     "audioUrl": "audios/cuento-4.ogg"
-  }
-   {
+  },
+  {
     "id": "cuento-5",
     "categoria": "cuentos",
     "titulo": "Nieves blancas",
     "icono": "🌹",
     "descripcion": "Un cuento de enanos para mi princesa.",
     "audioUrl": "audios/cuento-5.ogg"
-  }
-   {
+  },
+  {
     "id": "cuento-6",
     "categoria": "cuentos",
     "titulo": "Dr extraño",
     "icono": "🌹",
     "descripcion": "Un mago brujo que busca el amor, cuento para mi princesa.",
     "audioUrl": "audios/cuento-6.ogg"
-  }
-   {
+  },
+  {
     "id": "cuento-7",
     "categoria": "cuentos",
     "titulo": "La sirena de aguas dulces",
@@ -55,7 +55,6 @@
     "descripcion": "Una sirena que es princesa pero no tan hermosa como la mia.",
     "audioUrl": "audios/cuento-7.ogg"
   },
-  
   {
     "id": "historia-1",
     "categoria": "historias",
@@ -63,24 +62,24 @@
     "icono": "✨",
     "descripcion": "Mi versión de cómo empezó todo entre nosotros y algunas palabras bonitas.",
     "audioUrl": "audios/historia-1.ogg"
-  }
-    {
+  },
+  {
     "id": "historia-2",
     "categoria": "historias",
     "titulo": "Otra versión de cuando me enamore de ti",
     "icono": "✨",
     "descripcion": "Como me enamore del amor de mi vida.",
     "audioUrl": "audios/historia-2.ogg"
-  }
-    {
+  },
+  {
     "id": "historia-3",
     "categoria": "historias",
     "titulo": "El día que te mande comida",
     "icono": "✨",
     "descripcion": "Un breve resumen de cuando te mande comida hermosa.",
     "audioUrl": "audios/historia-3.ogg"
-  }
-    {
+  },
+  {
     "id": "historia-4",
     "categoria": "historias",
     "titulo": "El día que me enamore de mi vida hermosa V2",
@@ -88,7 +87,6 @@
     "descripcion": "Mi versión de como me enamore de ti mejorada y la historia de deadpool.",
     "audioUrl": "audios/historia-4.ogg"
   },
-  
   {
     "id": "animo-1",
     "categoria": "animo",
@@ -96,7 +94,7 @@
     "icono": "❤️‍🩹",
     "descripcion": "Un mensaje para recordarte que te amo.",
     "audioUrl": "audios/animo-1.ogg"
- }
+  },
   {
     "id": "animo-2",
     "categoria": "animo",
@@ -104,7 +102,7 @@
     "icono": "❤️‍🩹",
     "descripcion": "Un mensaje para decirte que me encanta tu sonrisa.",
     "audioUrl": "audios/animo-2.ogg"
-  }
+  },
   {
     "id": "animo-3",
     "categoria": "animo",
@@ -112,69 +110,69 @@
     "icono": "❤️‍🩹",
     "descripcion": "Cantando para la bb hermosa.",
     "audioUrl": "audios/animo-3.ogg"
- }
-   {
+  },
+  {
     "id": "animo-4",
     "categoria": "animo",
     "titulo": "Princesa enferma",
     "icono": "❤️‍🩹",
     "descripcion": "Mensaje para los dolores de cabeza de la bb.",
     "audioUrl": "audios/animo-4.ogg"
- }
-   {
+  },
+  {
     "id": "animo-5",
     "categoria": "animo",
     "titulo": "Dios mio",
     "icono": "❤️‍🩹",
     "descripcion": "Pero que acabo de ver.",
     "audioUrl": "audios/animo-5.ogg"
- }
-   {
+  },
+  {
     "id": "animo-6",
     "categoria": "animo",
     "titulo": "-",
     "icono": "❤️‍🩹",
     "descripcion": "Cantando para la bb hermosa.",
     "audioUrl": "audios/animo-6.ogg"
- }
-   {
+  },
+  {
     "id": "animo-7",
     "categoria": "animo",
     "titulo": "-",
     "icono": "❤️‍🩹",
     "descripcion": "Cantando para la bb hermosa.",
     "audioUrl": "audios/animo-7.ogg"
- }
-   {
+  },
+  {
     "id": "animo-8",
     "categoria": "animo",
     "titulo": "-",
     "icono": "❤️‍🩹",
     "descripcion": "Cantando para la bb hermosa.",
     "audioUrl": "audios/animo-8.ogg"
- }
-   {
+  },
+  {
     "id": "animo-9",
     "categoria": "animo",
     "titulo": "-",
     "icono": "❤️‍🩹",
     "descripcion": "Cantando para la bb hermosa.",
     "audioUrl": "audios/animo-9.ogg"
- }
-   {
+  },
+  {
     "id": "animo-10",
     "categoria": "animo",
     "titulo": "-",
     "icono": "❤️‍🩹",
     "descripcion": "Cantando para la bb hermosa.",
     "audioUrl": "audios/animo-10.ogg"
- }
-   {
+  },
+  {
     "id": "animo-11",
     "categoria": "animo",
     "titulo": "-",
     "icono": "❤️‍🩹",
     "descripcion": "Cantando para la bb hermosa.",
     "audioUrl": "audios/animo-11.ogg"
- },
+  }
 ]
