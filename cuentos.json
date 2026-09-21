@@ -15,6 +15,7 @@
     "descripcion": "Mi versión de cómo empezó todo entre nosotros.",
     "audioUrl": "audios/historia1.mp3"
   },
+  
   {
     "id": "animo-1",
     "categoria": "animo",
@@ -22,8 +23,9 @@
     "icono": "❤️‍🩹",
     "descripcion": "Un mensaje para recordarte que te amo.",
     "audioUrl": "audios/animo-1.ogg"
-
-        "id": "animo-2",
+ },
+  {
+    "id": "animo-2",
     "categoria": "animo",
     "titulo": "Encantadora sonrisa",
     "icono": "❤️‍🩹",
