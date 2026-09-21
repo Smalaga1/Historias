@@ -1,18 +1,26 @@
 [
   {
     "id": "cuento-1",
+    "categoria": "cuentos",
     "titulo": "El Principito y la Rosa",
     "icono": "🌹",
-    "duracion": "4:30 min",
-    "descripcion": "Un clásico recordándote lo especial que eres para mí.",
+    "descripcion": "Un clásico para recordarte lo mucho que significas para mí.",
     "audioUrl": "audios/cuento1.mp3"
   },
   {
-    "id": "cuento-2",
-    "titulo": "Nuestra Historia de Amor",
+    "id": "historia-1",
+    "categoria": "historias",
+    "titulo": "El día que nos conocimos",
     "icono": "✨",
-    "duracion": "8:15 min",
-    "descripcion": "Un resumen contado por mí de cómo nos conocimos.",
-    "audioUrl": "audios/cuento2.mp3"
+    "descripcion": "Mi versión de cómo empezó todo entre nosotros.",
+    "audioUrl": "audios/historia1.mp3"
+  },
+  {
+    "id": "animo-1",
+    "categoria": "animo",
+    "titulo": "Para cuando me extrañes o estés triste",
+    "icono": "🩹",
+    "descripcion": "Un mensaje corto recordándote lo fuerte y especial que eres.",
+    "audioUrl": "audios/animo1.mp3"
   }
 ]
