@@ -2,10 +2,10 @@
   {
     "id": "cuento-1",
     "categoria": "cuentos",
-    "titulo": "El Principito y la Rosa",
+    "titulo": "Cenicienta",
     "icono": "🌹",
-    "descripcion": "Un clásico para recordarte lo mucho que significas para mí.",
-    "audioUrl": "audios/cuento1.mp3"
+    "descripcion": "Un cunetito para que duerma la bb.",
+    "audioUrl": "audios/cuento-1.ogg"
   },
   {
     "id": "historia-1",
@@ -19,8 +19,15 @@
     "id": "animo-1",
     "categoria": "animo",
     "titulo": "Primer beso en Audio",
-    "icono": "🩹",
-    "descripcion": "Un mensaje corto recordándote lo fuerte y especial que eres.",
+    "icono": "❤️‍🩹",
+    "descripcion": "Un mensaje para recordarte que te amo.",
     "audioUrl": "audios/animo-1.ogg"
+
+        "id": "animo-2",
+    "categoria": "animo",
+    "titulo": "Encantadora sonrisa",
+    "icono": "❤️‍🩹",
+    "descripcion": "Un mensaje para decirte que me encanta tu sonrisa.",
+    "audioUrl": "audios/animo-2.ogg"
   }
 ]
