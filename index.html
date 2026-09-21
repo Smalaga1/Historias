@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuentos para Ti ❤️</title>
+  <style>
+    :root {
+      --bg-color: #fdf6f0;
+      --card-bg: #ffffff;
+      --primary: #e63946;
+      --primary-hover: #d62839;
+      --text: #2b2d42;
+      --text-light: #6c757d;
+      --accent: #ffb703;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text);
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    header h1 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+    }
+
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 12px;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      background: #ffe5ec;
+      padding: 10px;
+      border-radius: 12px;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .audio-player {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 30px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed #eee;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .badge {
+      background-color: #fff0f3;
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📖 Cuentos & Historias</h1>
+    <p>Un espacio especial para que me escuches cuando quieras.</p>
+  </header>
+
+  <main class="catalog" id="catalogContainer">
+    <!-- Los cuentos se cargarán automáticamente aquí -->
+  </main>
+
+  <script>
+    // Cargar historial de reproducciones guardado en el navegador de ella
+    const getPlaysCount = () => JSON.parse(localStorage.getItem('cuentos_plays') || '{}');
+    const savePlayCount = (id) => {
+      const plays = getPlaysCount();
+      plays[id] = (plays[id] || 0) + 1;
+      localStorage.setItem('cuentos_plays', JSON.stringify(plays));
+      document.getElementById(`count-${id}`).innerText = `${plays[id]} veces escuchado`;
+    };
+
+    // Cargar cuentos desde el archivo cuentos.json
+    async function loadCatalog() {
+      try {
+        const response = await fetch('cuentos.json');
+        const cuentos = await response.json();
+        const catalogContainer = document.getElementById('catalogContainer');
+        const plays = getPlaysCount();
+
+        catalogContainer.innerHTML = '';
+
+        cuentos.forEach(cuento => {
+          const count = plays[cuento.id] || 0;
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <div>
+              <div class="card-header">
+                <div class="card-icon">${cuento.icono || '🎧'}</div>
+                <div>
+                  <div class="card-title">${cuento.titulo}</div>
+                  <small style="color: var(--text-light);">${cuento.duracion || ''}</small>
+                </div>
+              </div>
+              <p class="card-desc">${cuento.descripcion}</p>
+            </div>
+            <div>
+              <audio class="audio-player" controls preload="metadata" id="audio-${cuento.id}">
+                <source src="${cuento.audioUrl}" type="audio/mpeg">
+                Tu navegador no soporta reproducción de audio.
+              </audio>
+              <div class="stats">
+                <span class="badge" id="count-${cuento.id}">${count} veces escuchado</span>
+                <span>🎙️ Narrado por ti</span>
+              </div>
+            </div>
+          `;
+          catalogContainer.appendChild(card);
+
+          // Contar una reproducción cuando escuche al menos 5 segundos
+          const audioElement = document.getElementById(`audio-${cuento.id}`);
+          let counted = false;
+          audioElement.addEventListener('timeupdate', () => {
+            if (audioElement.currentTime > 5 && !counted) {
+              counted = true;
+              savePlayCount(cuento.id);
+            }
+          });
+          audioElement.addEventListener('ended', () => { counted = false; });
+        });
+      } catch (error) {
+        console.error("Error cargando el catálogo:", error);
+      }
+    }
+
+    loadCatalog();
+  </script>
+</body>
+</html>

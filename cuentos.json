@@ -1,0 +1,18 @@
+[
+  {
+    "id": "cuento-1",
+    "titulo": "El Principito y la Rosa",
+    "icono": "🌹",
+    "duracion": "4:30 min",
+    "descripcion": "Un clásico recordándote lo especial que eres para mí.",
+    "audioUrl": "audios/cuento1.mp3"
+  },
+  {
+    "id": "cuento-2",
+    "titulo": "Nuestra Historia de Amor",
+    "icono": "✨",
+    "duracion": "8:15 min",
+    "descripcion": "Un resumen contado por mí de cómo nos conocimos.",
+    "audioUrl": "audios/cuento2.mp3"
+  }
+]
