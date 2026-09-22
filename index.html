@@ -5,13 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Un Rincón Para Ti ❤️</title>
   <style>
+    :root {
+      --bg-color: #fff5f7;
+      --card-bg: rgba(255, 255, 255, 0.92);
+      --primary: #ff4d6d;
+      --primary-dark: #c9184a;
+      --accent: #ffb3c1;
+      --text: #2b2d42;
+      --text-light: #6c757d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+
+    body {
+      background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+      padding-bottom: 110px; /* Espacio extra abajo para que el anuncio no tape contenido */
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      overflow-x: hidden;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    /* Fondo con animación de corazones flotantes */
+    .bg-hearts {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart-particle {
+      position: absolute;
+      bottom: -30px;
+      opacity: 0.6;
+      animation: floatUp 8s infinite linear;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+      100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Barra Superior Modo Ghibli */
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      padding: 5px 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Encabezado */
+    header {
+      text-align: center;
+      padding: 15px 10px 10px;
+      position: relative;
+      z-index: 1;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    header h1 {
+      color: var(--primary-dark);
+      font-size: 2.3rem;
+      margin-bottom: 6px;
+      transition: color 0.5s ease;
+    }
+
+    header p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      transition: color 0.5s ease;
+    }
+
+    /* Contador de Días Juntos */
+    .days-counter {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(6px);
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 25px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      margin-top: 10px;
+      border: 1px solid rgba(255, 77, 109, 0.2);
+      transition: all 0.5s ease;
+    }
+
     /* Contenedor de enlaces especiales */
     .links-container {
       display: flex;
       justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin: 10px 0 25px;
+      margin: 15px 0 10px;
       position: relative;
       z-index: 1;
     }
@@ -52,69 +145,61 @@
     .special-link-btn.samsung-photos {
       background: linear-gradient(135deg, #2A5298 0%, #1E3C72 100%);
     }
-    :root {
-      --bg-color: #fff5f7;
-      --card-bg: rgba(255, 255, 255, 0.92);
-      --primary: #ff4d6d;
-      --primary-dark: #c9184a;
-      --accent: #ffb3c1;
-      --text: #2b2d42;
-      --text-light: #6c757d;
-    }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-
-    body {
-      background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 20px;
-      padding-bottom: 110px; /* Espacio extra abajo para que el anuncio no tape contenido */
-      max-width: 900px;
-      margin: 0 auto;
+    /* Sección Botón de Regalo */
+    .gift-section {
+      text-align: center;
+      margin: 15px 0 25px;
       position: relative;
-      overflow-x: hidden;
+      z-index: 10;
     }
 
-    /* Fondo con animación de corazones flotantes */
-    .bg-hearts {
+    .gift-btn {
+      background: linear-gradient(135deg, #ffd166 0%, #ffb703 100%);
+      color: #2b2d42;
+      border: 2px solid #ffffff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 183, 3, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: pulseGift 2s infinite alternate;
+    }
+
+    .gift-btn:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+
+    .gift-icon { font-size: 1.4rem; }
+
+    .flower-container {
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
+      top: 0; left: 0; width: 100vw; height: 100vh;
       pointer-events: none;
-      z-index: 0;
+      z-index: 9999;
       overflow: hidden;
     }
 
-    .heart-particle {
+    .falling-flower {
       position: absolute;
-      bottom: -30px;
-      opacity: 0.6;
-      animation: floatUp 8s infinite linear;
+      top: -40px;
+      user-select: none;
+      animation: fallFlower 4.5s linear forwards;
     }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
-      100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+    @keyframes fallFlower {
+      0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(360deg) scale(1.2); opacity: 0; }
     }
 
-    /* Encabezado */
-    header {
-      text-align: center;
-      padding: 25px 10px 15px;
-      position: relative;
-      z-index: 1;
-      animation: fadeInDown 0.8s ease;
-    }
-
-    header h1 {
-      color: var(--primary-dark);
-      font-size: 2.3rem;
-      margin-bottom: 8px;
-    }
-
-    header p {
-      color: var(--text-light);
-      font-size: 1.05rem;
+    @keyframes pulseGift {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.04); }
     }
 
     /* Navegación tipo Carpetas */
@@ -190,15 +275,17 @@
       box-shadow: 0 12px 25px rgba(255, 77, 109, 0.2);
     }
 
+    /* Corregido: Mantiene visible la tarjeta cuando se reproduce */
     .card.is-playing {
+      opacity: 1 !important;
       border: 2px solid var(--primary);
       box-shadow: 0 0 20px rgba(255, 77, 109, 0.35);
       animation: pulsePlaying 2s infinite alternate;
     }
 
     @keyframes pulsePlaying {
-      0% { box-shadow: 0 0 10px rgba(255, 77, 109, 0.2); }
-      100% { box-shadow: 0 0 25px rgba(255, 77, 109, 0.5); }
+      0% { opacity: 1; box-shadow: 0 0 10px rgba(255, 77, 109, 0.2); }
+      100% { opacity: 1; box-shadow: 0 0 25px rgba(255, 77, 109, 0.5); }
     }
 
     .card-header {
@@ -304,7 +391,7 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      transition: opacity 0.4s ease, transform 0.4s ease, background 0.5s ease, border-color 0.5s ease;
     }
 
     .ad-header {
@@ -351,6 +438,103 @@
       font-style: normal;
     }
 
+    /* --- MODO GHIBLI (NOCTURNO) --- */
+    body.ghibli-mode {
+      background: linear-gradient(135deg, #0b132b 0%, #1c2541 50%, #2e1065 100%);
+      color: #f1f5f9;
+    }
+
+    body.ghibli-mode header h1 {
+      color: #ffb703;
+      text-shadow: 0 0 12px rgba(255, 183, 3, 0.4);
+    }
+
+    body.ghibli-mode header p,
+    body.ghibli-mode .card-desc,
+    body.ghibli-mode .stats { color: #cbd5e1; }
+
+    body.ghibli-mode .days-counter {
+      background: rgba(15, 23, 42, 0.8);
+      color: #ffb703;
+      border-color: rgba(255, 183, 3, 0.3);
+    }
+
+    body.ghibli-mode .folder-btn {
+      background: rgba(30, 41, 59, 0.8);
+      color: #f8fafc;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    body.ghibli-mode .folder-btn.active {
+      background: linear-gradient(45deg, #ffb703, #fb8500);
+      color: #0f172a;
+      box-shadow: 0 6px 18px rgba(255, 183, 3, 0.35);
+    }
+
+    body.ghibli-mode .card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 183, 3, 0.2);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    body.ghibli-mode .card-title { color: #ffffff; }
+    body.ghibli-mode .card-icon { background: rgba(255, 183, 3, 0.15); }
+    body.ghibli-mode .card-category-tag, body.ghibli-mode .badge {
+      background: rgba(255, 183, 3, 0.15);
+      color: #ffb703;
+    }
+
+    body.ghibli-mode .card.is-playing {
+      border: 2px solid #ffb703;
+      box-shadow: 0 0 25px rgba(255, 183, 3, 0.5);
+    }
+
+    body.ghibli-mode .romantic-ad { background: #0f172a; border-color: #ffb703; color: #f8fafc; }
+    body.ghibli-mode .ad-badge { background: linear-gradient(45deg, #ffb703, #fb8500); color: #0f172a; }
+    body.ghibli-mode .ad-content { color: #f8fafc; }
+
+    /* --- MODO CUMPLEAÑOS (26 DE JULIO) --- */
+    body.birthday-mode {
+      background: linear-gradient(135deg, #ffe5ec 0%, #ffc6ff 50%, #ffd166 100%);
+    }
+
+    body.birthday-mode header h1 { color: #b5179e; text-shadow: 0 0 15px rgba(255, 183, 3, 0.5); }
+    body.birthday-mode .gift-btn {
+      background: linear-gradient(135deg, #ff007f 0%, #ffb703 100%);
+      color: white;
+      box-shadow: 0 8px 25px rgba(255, 0, 127, 0.5);
+    }
+
+    /* --- MODO ANIVERSARIO (26 DE NOVIEMBRE) --- */
+    body.anniversary-mode {
+      background: linear-gradient(135deg, #4a0e17 0%, #800f2f 50%, #a4133c 100%);
+      color: #ffffff;
+    }
+
+    body.anniversary-mode header h1 { color: #ffb3c1; text-shadow: 0 0 15px rgba(255, 77, 109, 0.7); }
+    body.anniversary-mode header p,
+    body.anniversary-mode .days-counter,
+    body.anniversary-mode .card-desc,
+    body.anniversary-mode .stats { color: #ffe5ec; }
+
+    body.anniversary-mode .days-counter {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 179, 193, 0.4);
+    }
+
+    body.anniversary-mode .card {
+      background: rgba(89, 13, 34, 0.85);
+      border: 1px solid #ff4d6d;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.35);
+    }
+
+    body.anniversary-mode .card-title { color: #ffffff; }
+    body.anniversary-mode .gift-btn {
+      background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 100%);
+      color: white;
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.6);
+    }
+
     @keyframes slideUpAd {
       from { transform: translateY(100px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
@@ -385,9 +569,21 @@
   <!-- Fondo animado de corazones -->
   <div class="bg-hearts" id="heartsContainer"></div>
 
+  <!-- Botón Modo Ghibli Nocturno -->
+  <div class="top-bar">
+    <button id="ghibliToggleBtn" class="folder-btn" onclick="toggleGhibliMode()" style="font-size: 0.85rem;">
+      🌙 Modo Ghibli
+    </button>
+  </div>
+
   <header>
     <h1>✨ Tu Rincón Especial</h1>
     <p>Historias, cuentos y palabras siempre para ti.</p>
+    
+    <!-- CONTADOR DE DÍAS JUNTOS -->
+    <div class="days-counter">
+      💖 Llevamos <span id="daysCountNum">0</span> días juntos de amor 💖
+    </div>
   </header>
 
   <!-- SECCIÓN DE ENLACES ESPECIALES (Spotify, Apple Music, Álbum Samsung) -->
@@ -410,6 +606,16 @@
       <span>Fotos Juntos</span>
     </a>
   </div>
+
+  <!-- SECCIÓN BOTÓN DE REGALO -->
+  <div class="gift-section">
+    <button class="gift-btn" onclick="openGift()" id="giftBtn">
+      <span class="gift-icon">🎁</span>
+      <span>¡Toca para tu regalo!</span>
+    </button>
+  </div>
+
+  <div id="flowerContainer" class="flower-container"></div>
   
   <!-- Navegación por carpetas -->
   <nav class="folders-nav">
@@ -445,30 +651,44 @@
   <script>
     let allAudios = [];
     let currentCategory = 'todos';
+    let isGhibliMode = false;
 
-    // LISTA DE FRASES Y ANUNCIOS PERSONALIZADOS
-    // (Puedes agregar, quitar o editar todas las frases que quieras aquí)
+    // FECHA DE INICIO DEL NOVIAZGO: 26 de Noviembre de 2022
+    const FECHA_ANIVERSARIO_INICIO = new Date(2022, 10, 26);
+
+    function updateDaysCounter() {
+      const hoy = new Date();
+      const diferenciaTiempo = Math.abs(hoy - FECHA_ANIVERSARIO_INICIO);
+      const diasJuntos = Math.floor(diferenciaTiempo / (1000 * 60 * 60 * 24));
+      const el = document.getElementById('daysCountNum');
+      if (el) el.innerText = diasJuntos;
+    }
+
+    // LISTA DE FRASES PERSONALIZADAS + FRASES DE STUDIO GHIBLI
     const frasesAnuncios = [
-"\" E no, tu serás la única :) \"",
-"\" No veo motivos por qué decir que no 🤭, pues esperemos y se den las cosas jeje me puse bien nervioso jajaja. \"",
-"\" En verdad que en el único momento de quw vas a dejar de ser mi novia va ser cuando te conviertas en mi esposa. ❤️ \"",
-"\" Oye si me gusta mucho Málaga Rodríguez le da cache. ✨️ \"",
-"\" Literalmente te puse de mi alarma para despertar de buenas. 💘 \"",
-"\" Nop pero el sentimiento que iba sentir y sentia y siento ese si no cambio. \"",
-"\" Siii, me dice bueno y cuando me la presentas o que y yo cuando ella se sienta lista papá. \"",
-"\" Una eres fantastica, eres y seras el amor de mi vida. \"",
-"\" Pero como no mi cielo tu eres el amor de mi vida todos los días. \"",
-"\" Jeje te vez muy hermosa con tu gorrito de tiburón. \"",
-"\" Se fuerte te amo y cualquier cosa aquí ando. \"",
-"\" Ame verte tan feliz cuando empezaste a andar en la bici. \"",
-"\" No olvides de echar la lima o eso para las uñas. \"",
-"\" Jejej de nada mi chicle jiji sabes que no tienes que agradecer yo encantado de acompañarte a donde sea mi vida siempre será maravilloso. 💖 \"",
-"\" Me mordio mi novia, me vio cara de bistec y le hizo am am am. \"",
-"\" Mi pequeña princesa, amor de mi vida y de corazón. \"",
-"\" A santiago nunca quererse llevar, santiago estar triste:( \"",
-"\" 30 de mayo 2023 cuando bailamos juntos bb \"",
-      "\"Recordatorio diario: Recuerda tomar agua y sonreír un poquito hoy.\""
-     
+      "\" E no, tu serás la única :) \"",
+      "\" No veo motivos por qué decir que no 🤭, pues esperemos y se den las cosas jeje me puse bien nervioso jajaja. \"",
+      "\" En verdad que en el único momento de quw vas a dejar de ser mi novia va ser cuando te conviertas en mi esposa. ❤️ \"",
+      "\" Oye si me gusta mucho Málaga Rodríguez le da cache. ✨️ \"",
+      "\" Literalmente te puse de mi alarma para despertar de buenas. 💘 \"",
+      "\" Nop pero el sentimiento que iba sentir y sentia y siento ese si no cambio. \"",
+      "\" Siii, me dice bueno y cuando me la presentas o que y yo cuando ella se sienta lista papá. \"",
+      "\" Una eres fantastica, eres y seras el amor de mi vida. \"",
+      "\" Pero como no mi cielo tu eres el amor de mi vida todos los días. \"",
+      "\" Jeje te vez muy hermosa con tu gorrito de tiburón. \"",
+      "\" Se fuerte te amo y cualquier cosa aquí ando. \"",
+      "\" Ame verte tan feliz cuando empezaste a andar en la bici. \"",
+      "\" No olvides de echar la lima o eso para las uñas. \"",
+      "\" Jejej de nada mi chicle jiji sabes que no tienes que agradecer yo encantado de acompañarte a donde sea mi vida siempre será maravilloso. 💖 \"",
+      "\" Me mordio mi novia, me vio cara de bistec y le hizo am am am. \"",
+      "\" Mi pequeña princesa, amor de mi vida y de corazón. \"",
+      "\" A santiago nunca quererse llevar, santiago estar triste:( \"",
+      "\" 30 de mayo 2023 cuando bailamos juntos bb \"",
+      "\"Recordatorio diario: Recuerda tomar agua y sonreír un poquito hoy.\"",
+      "\"«Un corazón es una carga pesada» — El Castillo Ambulante 🔥\"",
+      "\"«Te he estado buscando durante mucho tiempo» — Howl ✨\"",
+      "\"«No importa cuántas armas tengas... no puedes vivir sin amor» — El Castillo en el Cielo 🏰\"",
+      "\"«Siempre estaré aquí para ti, sin importar las sombras» — Chihiro 🌸\""
     ];
 
     let currentAdIndex = 0;
@@ -500,15 +720,31 @@
       const adText = document.getElementById('adText');
       if (frasesAnuncios.length > 0 && adText) {
         adText.innerText = frasesAnuncios[0];
-        setInterval(rotateAd, 8000); // Cambia cada 8000ms (8 segundos)
+        setInterval(rotateAd, 8000); // Cambia cada 8 segundos
       }
     }
 
-    // Generar partículas de corazones flotantes
+    // MODO GHIBLI Y PARTÍCULAS FLOTANTES
+    function toggleGhibliMode() {
+      isGhibliMode = !isGhibliMode;
+      document.body.classList.toggle('ghibli-mode');
+      const btn = document.getElementById('ghibliToggleBtn');
+      if (isGhibliMode) {
+        btn.innerText = '☀️ Modo Rosa';
+      } else {
+        btn.innerText = '🌙 Modo Ghibli';
+      }
+      createFloatingHearts();
+    }
+
     function createFloatingHearts() {
       const container = document.getElementById('heartsContainer');
-      const icons = ['❤️', '💖', '✨', '🌸', '💕'];
-      for (let i = 0; i < 16; i++) {
+      container.innerHTML = '';
+      const icons = isGhibliMode 
+        ? ['🖤', '✨', '⭐', '🔥', '🧹', '🌌'] 
+        : ['❤️', '💖', '✨', '🌸', '💕'];
+
+      for (let i = 0; i < 18; i++) {
         const heart = document.createElement('span');
         heart.className = 'heart-particle';
         heart.innerText = icons[Math.floor(Math.random() * icons.length)];
@@ -517,6 +753,104 @@
         heart.style.animationDelay = `${Math.random() * 5}s`;
         heart.style.fontSize = `${1 + Math.random() * 0.8}rem`;
         container.appendChild(heart);
+      }
+    }
+
+    // DETECTOR AUTOMÁTICO DE DÍAS ESPECIALES Y REGALOS
+    function getTodaySpecialTrend() {
+      const today = new Date();
+      const month = today.getMonth(); // 0 = Ene, 1 = Feb, 6 = Jul, 8 = Sep, 10 = Nov
+      const day = today.getDate();
+
+      // Cumpleaños de ella (26 de Julio)
+      if (month === 6 && day === 26) {
+        return {
+          type: 'birthday',
+          icons: ['🎂', '🎉', '🎁', '👑', '✨', '🎈', '💖'],
+          message: '¡FELIZ CUMPLEAÑOS MI AMOR! 🎂👑 Gracias por existir y llenar mi vida de alegría. ¡Te amo con todo mi corazón!',
+          btnText: '🎂 ¡Feliz Cumpleaños Mi Princesa! 🎁',
+          bodyClass: 'birthday-mode'
+        };
+      }
+
+      // Aniversario (26 de Noviembre)
+      if (month === 10 && day === 26) {
+        return {
+          type: 'anniversary',
+          icons: ['💖', '👩‍❤️‍👨', '💍', '🌹', '✨', '🥂', '❤️'],
+          message: '¡FELIZ ANIVERSARIO MI VIDA! 👩‍❤️‍👨❤️ Cada día a tu lado es el regalo más hermoso. ¡Por muchísimos años más juntos!',
+          btnText: '👩‍❤️‍👨 ¡Feliz Aniversario Mi Amor! ❤️',
+          bodyClass: 'anniversary-mode'
+        };
+      }
+
+      // Flores Amarillas (21 de Septiembre o 21 de Marzo)
+      if ((month === 8 && day === 21) || (month === 2 && day === 21)) {
+        return {
+          type: 'yellow_flowers',
+          icons: ['🌼', '🌻', '💛', '✨', '🌸', '💐'],
+          message: '¡Feliz Día de las Flores Amarillas, mi amor! 🌼 Un detalle especial para la niña de mis ojos.',
+          btnText: '🌼 ¡Hoy es el día de las Flores Amarillas!',
+          bodyClass: ''
+        };
+      }
+
+      // San Valentín (14 de Febrero)
+      if (month === 1 && day === 14) {
+        return {
+          type: 'valentines',
+          icons: ['🌹', '❤️', '💖', '🥀', '💋', '✨'],
+          message: '¡Feliz San Valentín! 🌹 Un ramo de rosas infinitas para ti.',
+          btnText: '🌹 ¡Tu regalo de San Valentín!',
+          bodyClass: ''
+        };
+      }
+
+      // Día normal
+      return {
+        type: 'default',
+        icons: ['🌹', '💐', '🌸', '💖', '✨', '🌷', '🌻'],
+        message: '¡Un detalle especial para alegrarte el día! ❤️ Te amo mucho.',
+        btnText: '🎁 ¡Toca para tu regalo!',
+        bodyClass: ''
+      };
+    }
+
+    function launchFlowerRain(icons) {
+      const container = document.getElementById('flowerContainer');
+      container.innerHTML = '';
+      for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+          const flower = document.createElement('span');
+          flower.className = 'falling-flower';
+          flower.innerText = icons[Math.floor(Math.random() * icons.length)];
+          flower.style.left = `${Math.random() * 95}%`;
+          flower.style.fontSize = `${1.4 + Math.random() * 1.3}rem`;
+          flower.style.animationDuration = `${3.5 + Math.random() * 2.5}s`;
+          container.appendChild(flower);
+          setTimeout(() => flower.remove(), 6000);
+        }, i * 120);
+      }
+    }
+
+    function openGift() {
+      const trend = getTodaySpecialTrend();
+      launchFlowerRain(trend.icons);
+      setTimeout(() => {
+        alert(trend.message);
+      }, 400);
+    }
+
+    function applySpecialDateTheme() {
+      const trend = getTodaySpecialTrend();
+      const giftBtn = document.getElementById('giftBtn');
+
+      if (trend.bodyClass) {
+        document.body.classList.add(trend.bodyClass);
+      }
+
+      if (giftBtn) {
+        giftBtn.innerHTML = `<span class="gift-icon">${trend.icons[0]}</span> <span>${trend.btnText}</span>`;
       }
     }
 
@@ -635,6 +969,9 @@
       }
     }
 
+    // Inicializaciones
+    updateDaysCounter();
+    applySpecialDateTheme();
     createFloatingHearts();
     loadCatalog();
     initAds();
